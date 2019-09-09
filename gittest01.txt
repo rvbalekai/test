@@ -1,0 +1,69 @@
+{"2":{"1":[{"1":"3","2":{"1":"thread-a:r-7615344008346886164","2":{"14":{"1":{"1":"msg-a:r-7613691525130202036","2":{"1":1,"2":"sowmya.parvathareddy1617@gmail.com","3":"Sowmya Parvathareddy"},"3":[{"1":1,"2":"josh.critha@gmail.com"}],"7":"1568018644242","8":"","9":{"2":[{"1":0,"2":"
+using Sample;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sample
+{
+    public class Person :Interface1,Interface2
+    {
+        //protected internal int id;
+        internal string name;
+        protected string branch = \"ECE\";
+        const int id = 50;
+        Interface1 interface1 = new Person();
+        Interface2 interface2 = new Person();
+         //private int id;
+        public int Id { get; set; }
+
+        public virtual void Details()
+        {
+        
+          Console.WriteLine(\"Id :\" +Id);
+        }
+        public void Details(int rollno)
+        {
+            rollno = 1;
+            Console.WriteLine(\"Roll no\" + rollno);
+        }
+    }
+    public class Child : Person
+    {
+        public void Run()
+        {
+           
+            name = \"Sowmya\";
+            branch = \"ECE\";
+            Console.WriteLine(\"Name :\" + name);
+        }
+        public override void Details()
+        {
+           
+            //Console.WriteLine(\"Id :\" + id);
+
+        }
+    }
+    }
+    
+    class Program 
+    {
+        public static void Main(string[] args)
+        {
+        Child child = new Child();
+        child.Run();
+        child.Details();
+        Person person = new Person();
+        person.Details();
+        Interface1 interface1 = new Person();
+        Interface2 interface2 = new Person();
+        interface1.Details();
+
+
+    }
+    }
+
+
+"}],"7":1},"11":["^all","^r","^r_bt"],"18":"1568018644242","36":{"6":0},"37":{"4":0},"42":0,"43":{"1":1,"2":0,"3":1,"4":0},"52":"s:1900ec3132a5b7|#msg-a:r-7613691525130202036|0"},"3":1}}}}]},"3":{"1":1,"2":"276906","5":{"2":0},"7":1},"4":{"2":1,"3":"1568018644249","4":0,"5":251},"5":2}
