@@ -1,0 +1,269 @@
+{"2":{"1":[{"1":"34","2":{"1":"thread-a:r-6575769471353268467","2":{"14":{"1":{"1":"msg-a:r-1079607878890238252","2":{"1":1,"2":"sterlinmichele@gmail.com","3":"Michele Sterlin"},"3":[{"1":1,"2":"uniquemish@gmail.com","3":"JustForYe"},{"1":1,"2":"SterlinMichele@gmail.com","3":"Michele Sterlin"}],"7":"1568018255396","8":"","9":{"2":[{"1":0,"2":"
+/**
+ * 
+ */
+package Object_Class_Problems;
+
+import java.util.Scanner;
+
+public class HospitalMenu {
+\tpublic static void main(String[] args) {
+
+\t\tScanner sc = new Scanner(System.in);
+\t\tSystem.out.println(\"Enter number of hospital to add to database\");
+\t\tString output = \"\";
+\t\tint num = sc.nextInt();
+\t\tHospital[] input = userInput(num);
+\t\tint option = 0;
+\t\twhile (option < 4) {
+\t\t\tSystem.out.println(\"Case 1: Show all Hospital as per City\");
+\t\t\tSystem.out.println(\"Case 2: Sort all hospital as per rating\");
+\t\t\tSystem.out.println(\"Case 3: Show all hospital ratings  greater than input \");
+\t\t\tSystem.out.println(\"Case 4: Exit\");
+\t\t\toption = sc.nextInt();
+\t\t\tswitch (option) {
+\t\t\tcase 1:
+\t\t\t\toutput = citySearch(input);
+\t\t\t\tSystem.out.print(output);
+\t\t\t\tbreak;
+\t\t\tcase 2:
+\t\t\t\tHospital[] hosp1 = bubbleSort(input);
+\t\t\t\tprintFunc(hosp1);
+
+\t\t\t\tbreak;
+\t\t\tcase 3:
+\t\t\t\tratingSearch(input);
+\t\t\t\tbreak;
+\t\t\tcase 4:
+\t\t\t\tSystem.exit(4);
+\t\t\t\tbreak;
+\t\t\tdefault:
+\t\t\t\tSystem.out.println(\"Please enter a valid number\");
+\t\t\t\tbreak;
+\t\t\t}
+\t\t}
+
+\t}
+
+\tpublic static Hospital[] userInput(int num) {
+\t\tScanner sc = new Scanner(System.in);
+\t\tHospital[] hosp = new Hospital[num]; // creating an Array of hospital to
+\t\t\t\t\t\t\t\t\t\t\t\t// add hospital details
+\t\tfor (int i = 0; i < num; i++) {
+\t\t\tHospital details = new Hospital(); // creating an object for the
+\t\t\t\t\t\t\t\t\t\t\t\t// hospital array
+\t\t\tSystem.out.println(\"Please enter ID\");
+\t\t\tdetails.setId(sc.nextInt());
+\t\t\tSystem.out.println(\"Please enter Name of Hospital\");
+\t\t\tdetails.setName(sc.next());
+\t\t\tSystem.out.println(\"Please enter Hospital Rating\");
+\t\t\tdetails.setRating(sc.nextFloat());
+\t\t\tSystem.out.println(\"Please enter the hospital city\");
+\t\t\tdetails.setCity(sc.next());
+\t\t\thosp[i] = details; //adding object in hospital array 
+\t\t\tSystem.out.println(details);
+\t\t\tSystem.out.println(\"--------\");
+
+\t\t}
+\t\treturn hosp;
+
+\t}
+
+\tpublic static void printFunc(Hospital[] hosp) { // Array of object of
+\t\t\t\t\t\t\t\t\t\t\t\t\t// hospital
+\t\tfor (int i = 0; i < hosp.length; i++) {
+\t\t\tSystem.out.println(hosp[i]);
+\t\t}
+
+\t}
+
+\tpublic static String citySearch(Hospital[] hosp) {
+\t\tScanner sc = new Scanner(System.in);
+\t\tSystem.out.println(\"Enter City for Hospital Search\");
+\t\tString result = \"\";
+\t\tString city = sc.nextLine();
+\t\tfor (int i = 0; i < hosp.length; i++) {
+\t\t\tif (hosp[i].getCity().equals(city)) {
+\t\t\t\tresult = hosp[i].getName();
+\t\t\t}
+\t\t}
+\t\treturn result;
+\t}
+
+\tpublic static Hospital[] bubbleSort(Hospital[] hosp) {
+\t\tint n = hosp.length;
+\t\tfor (int i = 0; i < n - 1; i++)
+\t\t\tfor (int j = 0; j < n - i - 1; j++)
+\t\t\t\tif (hosp[j].getRating() > hosp[j + 1].getRating()) {
+\t\t\t\t\tHospital temp = hosp[j];
+\t\t\t\t\thosp[j] = hosp[j + 1];
+\t\t\t\t\thosp[j + 1] = temp;
+\t\t\t\t}
+\t\treturn hosp;
+\t}
+
+\tpublic static void ratingSearch(Hospital[] hosp) {
+\t\tScanner sc = new Scanner(System.in);
+\t\tSystem.out.println(\"Please enter the rating that you wanna see above\");
+\t\tint val = sc.nextInt();
+\t\tfor (int i = 0; i < hosp.length; i++) {
+\t\t\tif (hosp[i].getRating() > val) {
+\t\t\t\tSystem.out.println(hosp[i].getName());
+
+\t\t\t} else {
+\t\t\t\tSystem.out.println(\"There are no hospitals above \" + val + \" rating\");
+\t\t\t}
+
+\t\t}
+\t}
+}
+
+
+
+
+
+
+
+Hospital Entity
+
+/**
+ * 
+ */
+package Object_Class_Problems;
+
+public class Hospital {
+\tprivate int id;
+\tprivate String name;
+\tprivate float rating;
+\tprivate String city;
+
+\tpublic Hospital() {
+\t\tid = 0;
+\t\tname = \"\";
+\t\trating = 0;
+\t\tcity = \"\";
+\t}
+
+\tpublic Hospital(int id, String name, float rating, String city) {
+\t\tsuper();
+\t\tthis.id = id;
+\t\tthis.name = name;
+\t\tthis.rating = rating;
+\t\tthis.city = city;
+\t}
+
+\tpublic int getId() {
+\t\treturn id;
+\t}
+
+\tpublic void setId(int id) {
+\t\tthis.id = id;
+\t}
+
+\tpublic String getName() {
+\t\treturn name;
+\t}
+
+\tpublic void setName(String name) {
+\t\tthis.name = name;
+\t}
+
+\tpublic float getRating() {
+\t\treturn rating;
+\t}
+
+\tpublic void setRating(float rating) {
+\t\tthis.rating = rating;
+\t}
+
+\tpublic String getCity() {
+\t\treturn city;
+\t}
+
+\tpublic void setCity(String city) {
+\t\tthis.city = city;
+\t}
+\t
+\t@Override
+\tpublic String toString() {
+\t\treturn \"Hospital [id = \" + id + \", name = \" + name + \", rating = \" + rating + \", city = \" + city + \"]\";
+\t}
+
+\tpublic static void main(String[] args) {
+\t\tHospital hosp = new Hospital (1, \"Bethesda Hospital\", 3, \"Boynton Beach\");
+\t\tSystem.out.println(hosp);
+
+\t}
+
+}
+ * 
+ */
+package Object_Class_Problems;
+
+public class Hospital {
+\tprivate int id;
+\tprivate String name;
+\tprivate float rating;
+\tprivate String city;
+
+\tpublic Hospital() {
+\t\tid = 0;
+\t\tname = \"\";
+\t\trating = 0;
+\t\tcity = \"\";
+\t}
+
+\tpublic Hospital(int id, String name, float rating, String city) {
+\t\tsuper();
+\t\tthis.id = id;
+\t\tthis.name = name;
+\t\tthis.rating = rating;
+\t\tthis.city = city;
+\t}
+
+\tpublic int getId() {
+\t\treturn id;
+\t}
+
+\tpublic void setId(int id) {
+\t\tthis.id = id;
+\t}
+
+\tpublic String getName() {
+\t\treturn name;
+\t}
+
+\tpublic void setName(String name) {
+\t\tthis.name = name;
+\t}
+
+\tpublic float getRating() {
+\t\treturn rating;
+\t}
+
+\tpublic void setRating(float rating) {
+\t\tthis.rating = rating;
+\t}
+
+\tpublic String getCity() {
+\t\treturn city;
+\t}
+
+\tpublic void setCity(String city) {
+\t\tthis.city = city;
+\t}
+\t
+\t@Override
+\tpublic String toString() {
+\t\treturn \"Hospital [id = \" + id + \", name = \" + name + \", rating = \" + rating + \", city = \" + city + \"]\";
+\t}
+
+\tpublic static void main(String[] args) {
+\t\tHospital hosp = new Hospital (1, \"Bethesda Hospital\", 3, \"Boynton Beach\");
+\t\tSystem.out.println(hosp);
+
+\t}
+
+}
+
+"}],"7":1},"11":["^all","^r","^r_bt","^io_im"],"18":"1568018255396","36":{"6":0},"37":{"4":0},"42":0,"43":{"1":3,"2":0,"3":90,"4":0},"52":"s:28481e03a5ec175|#msg-a:r-1079607878890238252|0"},"3":1}}}}]},"3":{"1":1,"2":"2331434","5":{"2":0},"7":1},"4":{"2":1,"3":"1568018255404","4":0,"5":138},"5":2}
