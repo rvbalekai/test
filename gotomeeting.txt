@@ -1,0 +1,11 @@
+launch.getgo.com
+join.gotomeeting.com
+builds.cdn.getgo.com
+apiglobal.gotomeeting.com
+global.gotomeeting.com
+weblibrary.cdn.getgo.com
+telemetry.servers.getgo.com
+
+
+
+We have allowed all Flydubai URLs from Mindtree proxy and firewall.  Cusotmer need to whitelist the Mindtree Public IPs and same has already informed to customer to whitelist.  They have also whitelisted the IPs.  Please check URLs again and let us know if any issues.
